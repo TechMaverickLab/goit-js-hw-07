@@ -2,8 +2,8 @@ import { galleryItems } from './gallery-items.js';
 
 // Створення і рендер розмітки на підставі масиву даних
 function createGalleryMarkup(items) {
-    return items.map(({ preview, original, description }) => {
-        return `
+	return items.map(({ preview, original, description }) => {
+		return `
         <li class="gallery__item">
           <a class="gallery__link" href="${original}">
             <img
@@ -15,7 +15,7 @@ function createGalleryMarkup(items) {
           </a>
         </li>
         `;
-    }).join('');
+	}).join('');
 }
 
 const galleryMarkup = createGalleryMarkup(galleryItems);
@@ -26,27 +26,27 @@ galleryList.innerHTML = galleryMarkup;
 galleryList.addEventListener('click', onGalleryClick);
 
 function onGalleryClick(event) {
-    event.preventDefault();
+	event.preventDefault();
     
-    if (event.target.nodeName !== 'IMG') {
-        return;
-    }
+	if (event.target.nodeName !== 'IMG') {
+		return;
+	}
 
-    const largeImageURL = event.target.dataset.source;
+	const largeImageURL = event.target.dataset.source;
 
-    // Відкриття модального вікна
-    const instance = basicLightbox.create(`
+	// Відкриття модального вікна
+	const instance = basicLightbox.create(`
         <img src="${largeImageURL}" width="800" height="600">
     `);
 
-    instance.show();
+	instance.show();
 
-    // Закриття на клавішу Escape
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            instance.close();
-            window.removeEventListener('keydown', this);
-        }
-    });
+	// Закриття на клавішу Escape
+	window.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') {
+			instance.close();
+			window.removeEventListener('keydown', this);
+		}
+	});
 }
 

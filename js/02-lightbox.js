@@ -1,8 +1,8 @@
 import { galleryItems } from './gallery-items.js';
 
 function createGalleryMarkup(items) {
-    return items.map(({ preview, original, description }) => {
-        return `
+	return items.map(({ preview, original, description }) => {
+		return `
         <li class="gallery__item">
           <a class="gallery__link" href="${original}">
             <img
@@ -14,7 +14,7 @@ function createGalleryMarkup(items) {
           </a>
         </li>
         `;
-    }).join('');
+	}).join('');
 }
 
 const galleryMarkup = createGalleryMarkup(galleryItems);
@@ -22,10 +22,10 @@ const galleryList = document.querySelector('.gallery');
 galleryList.innerHTML = galleryMarkup;
 
 const lightbox = new SimpleLightbox('.gallery__link', {
-    captionDelay: 250,
-    captions: true,
-    captionSelector: 'self',
-    captionType: 'attr',
-    captionsData: 'alt',
-    captionPosition: 'bottom',
+	captionDelay: 250,
+	captions: true,
+	captionSelector: 'self',
+	captionType: 'attr',
+	captionsData: 'alt',
+	captionPosition: 'bottom',
 });
