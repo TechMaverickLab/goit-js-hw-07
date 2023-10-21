@@ -1,3 +1,6 @@
+/* global SimpleLightbox */
+/* global document */
+
 import { galleryItems } from './gallery-items.js';
 
 function createGalleryMarkup(items) {
@@ -21,7 +24,7 @@ const galleryMarkup = createGalleryMarkup(galleryItems);
 const galleryList = document.querySelector('.gallery');
 galleryList.innerHTML = galleryMarkup;
 
-const lightbox = new SimpleLightbox('.gallery__link', {
+new SimpleLightbox('.gallery__link', {
 	captionDelay: 250,
 	captions: true,
 	captionSelector: 'self',
@@ -29,3 +32,4 @@ const lightbox = new SimpleLightbox('.gallery__link', {
 	captionsData: 'alt',
 	captionPosition: 'bottom',
 });
+

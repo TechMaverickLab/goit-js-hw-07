@@ -1,3 +1,7 @@
+/* global basicLightbox */
+/* global document */
+/* global window */
+
 import { galleryItems } from './gallery-items.js';
 
 // Створення і рендер розмітки на підставі масиву даних
