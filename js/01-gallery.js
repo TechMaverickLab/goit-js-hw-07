@@ -1,6 +1,6 @@
-/* global basicLightbox */
 /* global document */
 /* global window */
+/* global basicLightbox */
 
 import { galleryItems } from './gallery-items.js';
 
@@ -31,26 +31,29 @@ galleryList.addEventListener('click', onGalleryClick);
 
 function onGalleryClick(event) {
 	event.preventDefault();
-    
+
 	if (event.target.nodeName !== 'IMG') {
 		return;
 	}
 
 	const largeImageURL = event.target.dataset.source;
 
-	// Відкриття модального вікна
 	const instance = basicLightbox.create(`
         <img src="${largeImageURL}" width="800" height="600">
-    `);
+    `, {
+		onShow: () => {
+			window.addEventListener('keydown', onEscKeyPress);
+		},
+		onClose: () => {
+			window.removeEventListener('keydown', onEscKeyPress);
+		}
+	});
 
 	instance.show();
 
-	// Закриття на клавішу Escape
-	window.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape') {
+	function onEscKeyPress(event) {
+		if (event.key === 'Escape') {
 			instance.close();
-			window.removeEventListener('keydown', this);
 		}
-	});
+	}
 }
-
