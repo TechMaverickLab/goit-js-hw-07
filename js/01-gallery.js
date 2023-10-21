@@ -2,7 +2,7 @@
 /* global window */
 /* global basicLightbox */
 
-import { galleryItems } from './gallery-items.js';
+import galleryItems from './gallery-items.js';
 
 // Створення і рендер розмітки на підставі масиву даних
 function createGalleryMarkup(items) {

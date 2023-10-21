@@ -36,9 +36,3 @@ try {
 } catch (error) {
 	console.error('Error initializing SimpleLightbox:', error);
 }
-
-const galleryLinks = document.querySelectorAll('.gallery__link');
-galleryLinks.forEach((link, index) => {
-	const img = link.querySelector('.gallery__image');
-	
-});
